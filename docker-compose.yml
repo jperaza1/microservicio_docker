@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  btc-service:
+    build:
+      context: ./servicio_btc
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./servicio_btc:/usr/src/app
+      - /usr/src/app/node_modules
+  eth-service:
+    build:
+      context: ./servicio_eth
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./servicio_eth:/usr/src/app
+      - /usr/src/app/node_modules
+  gateway-service:
+    build:
+      context: ./gatewayService
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./gatewayService:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3100:3100
